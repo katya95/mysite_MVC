@@ -35,8 +35,7 @@ $args = [
   'password' =>$_POST['password'],
 'avatar'=>''];
  
-return $this->db->sql($query, $args);
-		
+	 $this->db->sql($query, $args);	
 	}
 
 }
