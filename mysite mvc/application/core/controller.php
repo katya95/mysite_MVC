@@ -1,7 +1,7 @@
 ﻿<?php
 
-class Controller {
-	
+class Controller 
+	{	
 	public $model;
 	public $view;
 	
@@ -9,8 +9,7 @@ class Controller {
 	{
 		$this->view = new View();
 	}
-	
-	// действие (action), вызываемое по умолчанию
+	// default action
 	function action_index()
 	{
 		// todo	

@@ -1,18 +1,20 @@
 <?php
 
 class Controller_Insert extends Controller
-{
-protected $db;
-    public function __construct() {
+	{
+	protected $db;
+	//linking the DB and model, which implements data output using PDO
+    public function __construct() 
+    {
         $this->view = new View();
          $this->model_db = new DB();
-        $this->model = new Model_insert( $this->model_db);
+        $this->model = new ModelInsert( $this->model_db);
     }
 
-	
 	function action_index()
 	{
-		$this->view->generate('insert_view.php', 'template_view.php');
+	$data = $this->model-> get_data();		
+	$this->view->generate('insert_view.php', 'template_view.php', $data);
 	}
 }
 ?>

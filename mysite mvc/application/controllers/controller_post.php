@@ -2,28 +2,21 @@
  
 class Controller_Post extends Controller
 {
-
-	/*function __construct()
-	{
-		$this->model = new Model_Post();
-		$this->view = new View();
-	}
-	*/
-
-protected $db;
-    public function __construct() {
-        $this->view = new View();
+	//linking the DB and model, which implements data output using PDO
+	protected $db;
+    public function __construct()
+     {
+         $this->view = new View();
          $this->db = new DB();
-        $this->model = new Model_post( $this->db);
+         $this->model = new ModelPost( $this->db);
     }
-
-function action_index()
+	//for output page "posts" using general template
+	function action_index()
 	{
-		$data = $this->model->get_post();		
+		$data = $this->model->getData();		
 		$this->view->generate('post_view.php', 'template_view.php', $data);
 	}
-    
-    
 
 }
+
 ?>

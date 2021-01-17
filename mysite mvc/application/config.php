@@ -1,8 +1,9 @@
 <?php
-/**
- * Class wrapper for working with PDO
- */
-class DB
+
+//$db = new PDO('mysql:host=localhost;dbname=mysite', '[root]', '[]');
+//$registry->set ('db', $db);
+
+/*class DB
 {
 
   //const DB_HOST = '127.0.0.1'; 
@@ -13,12 +14,10 @@ class DB
   const CHARSET = 'utf8';
   const DB_PREFIX = '';
  
-
   static private $db;
  
   protected static $instance = null;
  
-
   public function __construct(){
     if (self::$instance === null){
       try {
@@ -47,17 +46,14 @@ class DB
     return self::$db->prepare($stmt);
   }
  
-
   static public function exec($query) {
     return self::$db->exec($query);
   }
  
-
   static public function lastInsertId() {
     return self::$db->lastInsertId();
   }
  
-
   public static function run($query, $args = [])  {
     try{
       if (!$args) {
@@ -71,17 +67,14 @@ class DB
     }
   }
  
-
   public static function getRow($query, $args = [])  {
     return self::run($query, $args)->fetch();
   }
- 
 
   public static function getRows($query, $args = [])  {
     return self::run($query, $args)->fetchAll();
   }
  
-
   public static function getValue($query, $args = [])  {
     $result = self::getRow($query, $args);
     if (!empty($result)) {
@@ -90,7 +83,6 @@ class DB
     return $result;
   }
  
-
   public static function getColumn($query, $args = [])  {
     return self::run($query, $args)->fetchAll(PDO::FETCH_COLUMN);
   }
@@ -99,5 +91,5 @@ class DB
   {
     self::run($query, $args);
   }
-}
+}*/
 ?>

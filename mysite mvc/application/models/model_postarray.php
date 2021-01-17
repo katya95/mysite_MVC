@@ -5,9 +5,7 @@ class Model_Postarray extends Model
 	
 	public function get_data()
 	{	
-		
-		
-		
+		//This array created for exemple of output posts from file
 		return array(
 			
 			array(
@@ -33,7 +31,6 @@ class Model_Postarray extends Model
 				'title' => 'Пост 4',
 				'text' => 'текст текст текст текст ".'
 			),
-
 
 		);
 	}

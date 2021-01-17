@@ -1,22 +1,33 @@
 ﻿<?php
 
-class Model_post extends Model
+class ModelPost extends Model
 {
-protected $db;
-    public function __construct($db) {
-        $this->db = $db;
-        
-        
+	protected $db;
+    public function __construct($db)
+    {
+        $this->db = $db;  
     }
-	public function get_data()
+    // posts output
+	public function getData()
 	{	
-		
-		
-		
-		return $this->db->getColumn("SELECT * FROM post");
-       // foreach (($this->db->getColumn("SELECT * FROM post")) as $item) {
- // echo $item['title'].' '. $item['text'].'<br>';
+    return $post=$this->db->getRows("SELECT * FROM post");
 	}
 
+//Active Record
+	public function getTitle($id)
+	{
+		return $this->db->getValue("SELECT `title` FROM `post` WHERE `id_post` > ?", [$id]);
+	}
+
+	public function getText($id)
+	{
+		return $this->db->getValue("SELECT `text` FROM `post` WHERE `id_post` > ?", [$id]);
+	}
+	
+	public function getCount()
+	{
+		return $this->db->getValue("SELECT COUNT(1) FROM `post`");
+	}
 }
+
 ?>

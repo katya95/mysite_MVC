@@ -2,16 +2,10 @@
 
 class Model
 {
-	
-
-	// метод выборки данных
+	// method for fetching data
 	public function get_data()
 	{
 		// todo
 	}
-	
-
-
-
 }
 ?>
