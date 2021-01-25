@@ -1,50 +1,5 @@
 ﻿<?php 
-include_once ('application/models/model_insert.php');
-include_once ('application/config.php');
-$back = "<meta http-equiv='refresh' content='0; {$_SERVER['HTTP_REFERER']} ' ";
-$answer='';
-$db = new DB();
-$insert=new ModelInsert($db);
-if( isset ($_POST['name']) && trim(strlen($_POST['name'])) > 0 ){
-	$insert-> setName($_POST['name']);
-}else {
-	$answer='Введите имя!';
-	echo $answer;
-	echo $back;
-}
-if( isset ($_POST['name_2']) && trim(strlen($_POST['name_2'])) > 0 ){
-	$insert-> setSurname($_POST['name_2']);
-}else {
-	$answer='Введите фамилию!';
-	echo $answer;
-	echo $back;
-}
-if( isset ($_POST['city']) && trim(strlen($_POST['city'])) > 0 ){
-	$insert-> setCity($_POST['city']);
-}else {
-	$answer='Введите город!';
-	echo $answer;
-	echo $back;
-}
-if( isset ($_POST['email']) && trim(strlen($_POST['email'])) >  0){
-		if (preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $_POST['email'])){
-			$insert-> setEmail($_POST['email']);
-		}else {
-			$answer= 'Емейл указан неверно! ';
-			echo $back;
-		}
-}else{
- echo $back;
-}
-if( isset ($_POST['password']) && trim(strlen($_POST['password'])) > 0 ){
-	$insert-> setPassword($_POST['password']);
-}else {
-	$answer='Введите пароль!';
-	echo $answer;
-	echo $back;
-}
-$insert->insert();
-$answer= 'Вы зарегистрированы в системе!';
+$answer='Данные отправлены';
 
 ?>
 
