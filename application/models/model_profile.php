@@ -17,26 +17,6 @@ class ModelProfile extends Model
 	}
 
 //Active Record
-	public function getName($id)
-	{
-		return $this->db->getValue("SELECT `name` FROM `user` WHERE `id_user` = ?", [$id]);
-	}
-
-	public function getSurname($id)
-	{
-		return $this->db->getValue("SELECT `surname` FROM `user` WHERE `id_user` = ?", [$id]);
-	}
-	
-	public function getCity($id)
-	{
-		return $this->db->getValue("SELECT `city` FROM `user` WHERE `id_user` = ?", [$id]);
-	}
-	
-	public function getEmail($id)
-	{
-		return $this->db->getValue("SELECT `email` FROM `user` WHERE `id_user` = ?", [$id]);
-	}
-	
 	public function getPassword($id)
 	{
 		return $this->db->getValue("SELECT `password` FROM `user` WHERE `id_user` = ?", [$id]);
