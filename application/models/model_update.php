@@ -35,7 +35,8 @@ class ModelUpdate extends Model
    	protected $name_2;
     protected $city;
     protected $email;
-  	 protected $password;
+  	protected $password;
+  	public $answer;
       //update name
     public  function setName($name)
     {
@@ -171,6 +172,53 @@ class ModelUpdate extends Model
 		];
  		$this->db->sql($query, $args);
     }
+    
+    public function checkUpdate()
+    {
+    if( isset ($_POST['name']) && trim(strlen($_POST['name'])) > 0 ){
+	 	$this->setNameActive($_POST['name']);
+	 	$name=1;
+	}else{
+		$name=0;
+	}
+	if( isset ($_POST['name_2']) && trim(strlen($_POST['name_2'])) > 0 ){
+		$this-> setSurnameActive($_POST['name_2']);
+		$name_2=1;
+	} else{
+		$name_2=0;
+	}
+	if( isset ($_POST['city']) && trim(strlen($_POST['city'])) > 0 ){
+		$this-> setCityActive($_POST['city']);
+		$city=1;
+	} else{
+		$city=0;
+	}
+	if( isset ($_POST['email']) && trim(strlen($_POST['email'])) >  0){
+		if (preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $_POST['email'])){
+			$this-> setEmailActive($_POST['email']);
+			$email=1;
+		}else {
+			$this->answer= 'Емейл указан неверно! ';
+			$email=0;
+			//echo $back;
+		}
+	} else{
+		$email=0;
+	}
+	if( isset ($_POST['password']) && trim(strlen($_POST['password'])) > 0 ){
+		$this-> setPasswordActive($_POST['password']);
+		$password=1;
+	} else{
+		$password=0;
+	}
+	if ($name==1 && $name_2==1 && $city==1 && $email==1 && $password==1){
+	$this->updateUserActive();
+	$this->answer="Вы зарегистрированы в системе!";
+	} else {
+		$this->answer="Данные заполнены не верно!";
+	}
+    }
+    
   } 
 
     ?>
