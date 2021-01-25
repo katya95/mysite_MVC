@@ -1,0 +1,24 @@
+﻿<h1>Посты</h1>
+<p>
+<table width='80%'><tr><td>
+
+<b>Вывод постов</b>
+</td></tr>
+<?php 
+//output posts
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+$db = new DB();
+$post=new ModelPost($db);
+for ($i=1;$i<=$post->getCount()+1 ;$i++){
+	echo  '<tr><td><b>Тема поста:'.' '. $post->getTitle($i).'</b><br/>';
+	echo '<p>'. $post->getText($i).'</p><br/>';
+	echo '<p>Автор: '. $post->getUser($i).' '.$post->getSurname($i).'</p></td></tr>';
+}
+echo '</table>';
+   		
+?>
+
+
+
