@@ -7,14 +7,16 @@ class Controller_Insert extends Controller
     public function __construct() 
     {
         $this->view = new View();
-         $this->model_db = new DB();
-        $this->model = new ModelInsert( $this->model_db);
+         $this->db = new DB();
+        $this->model = new ModelInsert( $this->db);
     }
 
 	function action_index()
 	{
-	$data = $this->model-> get_data();		
+	$data = $this->model->check();		
 	$this->view->generate('insert_view.php', 'template_view.php', $data);
+	
 	}
+
 }
 ?>
