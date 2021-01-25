@@ -1,24 +1,14 @@
-<?php
+п»ї<?php
 //comparing data from a form with data from a database
 $id=0;
 include_once ('application/config.php');
-$name=$_POST['name'];
-$password=$_POST['password'];
-$db=new DB();
-$answer='';
-		foreach($db->query('SELECT * FROM user') as $row) {
-			if (($row['name']==$name)&&($row['password']==$password)){
-             $b= $row['id_user'];
-			 $user=$row['name'];
-			 $filename_user='application/views/name_view.php';
-			 file_put_contents($filename_user, $user);
-			 $filename='application/views/content2_view.php';
-		   	file_put_contents($filename, $b);
-			 $answer='Добро пожаловать,'.$user.'!';
-			
-			}
-		}
-$answer= 'Пользователь не найден!';
+include_once ('application/models/model_profile.php');
+$db = new DB();
+$user=new ModelProfile($db);
+$user->checkName();
+$user->checkPassword();
+$answer='Р”Р°РЅРЅС‹Рµ РѕС‚РїСЂР°РІР»РµРЅС‹';
+$user->check();
 ?>
 
 
@@ -27,7 +17,7 @@ $answer= 'Пользователь не найден!';
 <head>
 <meta http-equiv='refresh' content='5; URL=<?php echo $_SERVER['HTTP_REFERER'];?> '  />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>РїРѕСЃС‚</title>
+<title>Р С—Р С•РЎРѓРЎвЂљ</title>
 </head>
 
 <body bgcolor="#efefef" >
